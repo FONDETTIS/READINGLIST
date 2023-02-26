@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:substituteby="layout/partials/head" >
+     <title>Spring Boot ADMINITIS</title> 
+     
+     
+</head> 
+
+<body class="off-canvas">
+
+<div  th:replace="layout/partials/head :: head"></div>
+
+<div class="container">
+<div class="basic-form">
+
+         <div id="logo"><h1>ADMINITIS</h1></div> 
+
+<!--         <div class="clear"></div> -->
+        
+        
+<!--  		<div th:replace="@{${myfrag1}} :: ${myfrag2}"></div> -->
+			
+		
+<!--         <div id="messages" th:include="${templateName}::messages" /> -->
+<!--         <div th:substituteby="${templateName}::form" /> -->
+<!--         <div id="options" class="basic-links" th:include="${templateName}::options" /> -->
+
+    
+
+</div> 
+</div>
+
+<!-- <footer th:substituteby="layout/partials/footer" /></footer> -->
+<div  th:replace="layout/partials/footer :: footer"></div> 
+
+</body>
+</html>

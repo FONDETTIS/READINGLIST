@@ -1,0 +1,41 @@
+
+<header class="top-bar"> 
+
+<div  th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
+
+    <div class="attached">
+    
+        <div class="brand show-for-small hide-for-medium-up">
+            <span><a th:href="@{/}"><img th:src="@{/img/admin/blc-logo-leaf.png}" /></a></span>
+        </div>
+        <div class="brand show-for-medium-up hide-for-small">
+            <span><a th:href="@{/}"><img th:src="@{/img/admin/blc-logo-header.png}" /></a></span>
+        </div>
+
+		<div class="brand">
+		<span>ADMINITIS</span> 
+        </div> 
+
+		
+
+        <ul class="right">
+            <li class="has-dropdown2" th:inline="text">
+                <blc_admin:admin_user resultVar="adminuser" />
+                   	<a href="#">[[${adminuser.adminname}]]</a> 
+                  	
+                <ul class="dropdown">
+<!--                     <li><a href="#" th:href="@{/adminitis/changePassword}" th:text="#{header.password.change} + '...'" /></li>              -->
+                	<li><a href="#" th:href="@{../other/mychangePassword}" th:text="#{header.password.change} + '...'" /></li>             
+                </ul>
+            </li>
+            <li class="logout">
+<!--                 <a class="small button radius dark" th:href="@{/adminLogout.htm}" th:text="#{header.logout}" /> -->
+                <a class="small button radius dark" href="#" th:href="@{/logout}" th:text="#{header.logout}" >Logout</a>
+                  				                
+            </li>
+        </ul>
+        
+    
+    </div>
+</header>

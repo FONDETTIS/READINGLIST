@@ -1,0 +1,83 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-3.dtd">
+<!-- <!DOCTYPE html> -->
+<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
+
+
+<!-- <head> -->
+<head th:substituteby="layout/partials/head" >
+    <title>Spring Boot ADMINITIS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> 
+    
+<!--    	<link rel="shortcut icon" type="image/png" th:href="@{favicon.png}"/> -->
+
+    
+</head>
+
+  <body class="off-canvas">
+  
+  <div class="container">
+    <div class="basic-form">
+
+<!--          <div class="logo"> -->
+<!--             <img th:src="@{/img/admin/blc-logo-150.png}" /> -->
+<!--          </div> -->
+         
+         <div id="logo"><h1>READINGLIST Connexion</h1></div>
+         
+
+        <div class="clear"></div>
+  
+  
+    <div th:fragment="messages">
+        <div class="alert-box alert" th:unless="${#strings.isEmpty(param.login_error)}">
+            <div th:unless="${#strings.isEmpty(param.login_error)}"    th:text="#{password.invalidCombo}"   />
+        </div>
+        
+        <div class="alert-box alert" th:unless="${#strings.isEmpty(param.sessionTimeout)}" th:text="#{password.timeout}" />  
+        
+        <div class="alert-box success" th:unless="${#strings.isEmpty(param.messageCode)}">            
+            <div th:if="${param.messageCode[0] == 'usernameSent'}" th:text="#{password.usernameSent}" />
+            <div th:if="${param.messageCode[0] == 'passwordReset'}" th:text="#{password.passwordReset}" />
+        </div>
+    </div>
+
+<!--         <blc:form method="POST" th:fragment="form" th:action="@{/login_admin_post}" action="#"> -->
+        <form method="POST" th:fragment="form" th:action="@{/login}" action="#">
+
+        <label th:text="#{password.username}" />
+<!--         <input type="text" id="username" name="j_username" autofocus="autofocus" class="twelve" /> -->
+        <input type="text" id="username" name="username" autofocus="autofocus" class="twelve" />
+
+        <label th:text="#{password.password}" />
+<!--         <input type="password" id="password" name="j_password" class="twelve" /> -->
+        <input type="password" id="password" name="password" class="twelve" />
+        
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <input type="submit" class="button radius right" value="Se Connecter"/>
+
+<!--     	</blc:form> -->
+    	</form>
+
+    
+    <div th:fragment="options">
+        <ul class="inline-list">
+            <li><a href="#" th:href="@{/mysecurejob/forgotPassword}" th:text="#{password.forgotPassword}" /></li>
+            <li class="divider">&nbsp;</li>
+<!--             <li><a href="#" th:href="@{changePassword}" th:text="#{password.changePassword}" /></li> -->
+<!--             <li><a href="#" th:href="@{/mysecurejobChange/mychangePassword}" th:text="#{password.changePassword}" /></li> -->
+            <li><a href="#" th:href="@{/mysecurejob/changePassword}" th:text="#{password.changePassword}" /></li>
+            <li class="divider">&nbsp;</li>
+            <li><a href="#" th:href="@{forgotAdminname}" th:text="#{password.forgotAdminname}" /></li>
+        </ul>
+    </div>
+    
+    </div> <!-- /basic-form -->
+</div>
+    
+    <footer th:substituteby="layout/partials/footer" />
+    
+    
+</body>
+
+<!-- </html> -->

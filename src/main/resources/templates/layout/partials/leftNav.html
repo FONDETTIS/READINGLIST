@@ -1,0 +1,35 @@
+<div th:fragment="leftNav" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<section id="sidebar" role="complementary">
+<nav id="sideMenu" role="navigation">
+    
+    
+        <blc_admin:admin_module resultVar="adminmenu" />
+        
+        <ul class="blc-accordion">
+              <li class="blc-module" th:each="module : ${adminmenu.adminmodules}" th:inline="text"  
+                      th:classappend="${currentAdminModule != null and currentAdminModule.id == module.id}? 'active'">  
+                 <div class="title">
+                     <h5>
+                         <i th:class="${module.icon}"></i>
+                         [[#{${module.modulekey}}]]
+                     </h5> 
+                </div>
+                 <div class="content"
+                     th:style="${(currentAdminModule != null and currentAdminModule.id == module.id) ? '' : 'display: none;'}">
+                    <ul>
+							<li th:each="section : ${module.sections}" 
+                            		th:classappend="${(currentAdminSection != null) and (currentAdminSection.id == section.id) ? 'active' : ''}">
+<!--                              	C'est là que CATEGORY devient ACTIVE(a une couleur différente) -->
+                             		<a blc_admin:admin_section_href="${section}"> 
+                                 		[[#{${section.sectionkey}}]]  
+                             		</a>
+                    		</li>
+                    </ul>
+                 </div>
+              </li>  
+        </ul>
+</nav>
+</section>
+
+</div>

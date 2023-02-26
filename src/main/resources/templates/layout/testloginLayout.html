@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="layout/partials/head" >
+    <title>Spring Boot ADMINITIS</title>
+</head>
+
+<body class="off-canvas">
+ 
+  
+<div class="container"> 
+<div class="basic-form">
+  
+ <div id="logo"><h1>CSRFTEST3</h1></div>
+
+ <div class="clear"></div>
+ 
+ <div th:replace="@{${myfrag1}} :: ${myfrag2}"></div>
+    
+</div>
+</div>
+
+<div  th:replace="layout/partials/footer :: footer"></div> 
+
+</body>
+</html>

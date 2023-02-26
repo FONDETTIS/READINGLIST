@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        
+<!--    xmlns:mo="http://schema.broadleafcommerce.org/mo" -->
+<!--    http://schema.broadleafcommerce.org/mo -->
+<!--    http://schema.broadleafcommerce.org/mo/mo-3.0.xsd"> -->
+        
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" -->
+<!--     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" -->
+<!--     xmlns:context="http://www.springframework.org/schema/context" -->
+<!--     xmlns:aop="http://www.springframework.org/schema/aop" -->
+<!--     xmlns:mvc="http://www.springframework.org/schema/mvc" -->
+<!--     xsi:schemaLocation="http://www.springframework.org/schema/beans -->
+<!--        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd -->
+<!--        http://www.springframework.org/schema/context -->
+<!--        http://www.springframework.org/schema/context/spring-context-3.2.xsd -->
+<!--        http://www.springframework.org/schema/aop -->
+<!--        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd -->
+<!--        http://www.springframework.org/schema/mvc -->
+<!--        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"> -->
+
+
+	<!-- Resources do not need security -->
+<!--     <sec:http pattern="/**/*.css" security="none" /> -->
+<!--     <sec:http pattern="/**/*.js" security="none" /> -->
+<!--     <sec:http pattern="/img/**" security="none" /> -->
+<!--     <sec:http pattern="/fonts/**" security="none" /> -->
+<!--     <sec:http pattern="/favicon.ico" security="none" />    -->
+<!--     <sec:http pattern="/robots.txt" security="none" /> -->
+<!--     <sec:http pattern="/login" security="none" />  -->
+<!--     <sec:http pattern="/forgotUsername" security="none" /> -->
+<!--     <sec:http pattern="/forgotPassword" security="none" /> -->
+<!--     <sec:http pattern="/changePassword" security="none" /> -->
+<!--     <sec:http pattern="/resetPassword" security="none" /> -->
+<!--     <sec:http pattern="/sendResetPassword" security="none" /> -->
+
+
+
+	<!-- Broadleaf requires AOP -->
+    <aop:config/>
+
+	
+	<!-- <context:component-scan base-package="com.in28minutes.spring.basics"/> -->
+	
+	
+	<bean id="prodEntityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+<!--         <property name="entityManagerFactory" ref="entityManagerFactory"/>  -->
+         <property name="entityManagerFactory" ref="emf"/> 
+<!--         <property name="entityManagerInterface" value="org.hibernate.jpa.HibernateEntityManager"/> -->
+        <property name="entityManagerInterface" value="org.hibernate.ejb.HibernateEntityManager"/>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	   	<property name="dataSource" ref="dataSource"/> 
+	   	<property name="entityManagerFactory" ref="emf"/> 
+    </bean>
+    
+   
+
+</beans>
